@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row justify-content-md-left">
+        <h1 class="mt-4">{{ Header }}</h1>
+    </div>
+    <div class="row justify-content-md-left">
+        <a [routerLink]= "['/']"> Home </a>
+    </div>
+    <div *ngIf="updatePet" class="row justify-content-md-left mt-3">
+        <strong><h3>Details about {{updatePet.petname}}</h3></strong>
+    </div>
+    <div *ngIf="updatePet" class="row justify-content-md-left mt-2">
+        <strong>Pet Type: </strong> <p class="ml-2">{{updatePet.pettype}}</p>
+    </div>
+    <div *ngIf="updatePet" class="row justify-content-md-left">
+        <strong>Description: </strong> <p class="ml-2">{{updatePet.description}}</p>
+    </div>
+    <div *ngIf="updatePet" class="row justify-content-md-left">
+        <strong>Skills: </strong> 
+        <p class="ml-2">{{updatePet.skillone}}</p>
+    </div>
+    <div *ngIf="updatePet" class="row justify-content-md-left">
+        <p>{{updatePet.skilltwo}}</p>
+    </div>
+    <div *ngIf="updatePet" class="row justify-content-md-left">
+          <p>{{updatePet.skillthree}}</p>    
+    </div>
+    <div *ngIf="updatePet" class="row justify-content-md-left">
+        <strong>Likes: {{updatePet.likes}}</strong>
+    </div>
+
+    <div class="row justify-content-md-left mt-5">
+      <button class="btn btn-success" (click) = "voteUp(updatePet._id)" onclick="this.disabled = true">Like this pet</button>
+      <button class="btn btn-primary ml-3" (click) = "destroyPet(updatePet._id)">Adopt this pet</button>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,61 @@
+<div class="container">
+    <div class="row justify-content-md-left">
+        <h1 class="mt-4">{{ Header }}</h1>
+    </div>
+    <div class="row justify-content-md-left">
+        <h4>Edit this pet</h4>
+    </div>
+    <div class="text-danger" *ngIf = "editError"><p>{{editError.petname.message}}</p></div>
+    <div class="row justify-content-md-left border border-dark p-4 rounded">
+      <div class="form-group row" *ngIf ="updatePet">   
+      <form (submit) ="onUpdatePetClick(updatePet._id)">
+            <div class="form-group row">
+                <label class="col-sm-5 col-form-label">Pet name:</label>
+                <input type="text" class="form-control ml-3" name = "updatePet.petname" required minlength="3" [(ngModel)] = "updatePet.petname" #petname="ngModel" value ={{updatePet.petname}}/>
+                <div class="text-danger ml-3" [hidden] = "petname.valid"><p>*Pet name is required and should be more than 3 characters</p></div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-5 col-form-label">Pet type:</label>
+                <input type="text" class="form-control ml-3" name = "updatePet.pettype" required minlength="3" [(ngModel)] = "updatePet.pettype" #pettype="ngModel" value ={{updatePet.pettype}}/>
+                <div class="text-danger ml-3" [hidden] = "pettype.valid"><p>*Pet type is required and should be more than 3 characters </p></div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-5 col-form-label">Description:</label>
+                <input type="text" class="form-control ml-3" name = "updatePet.description" required minlength="3" [(ngModel)] = "updatePet.description" #description="ngModel" 
+                value ={{updatePet.description}}/>
+                <div class="text-danger ml-3" [hidden] ="description.valid"><p>*Pet description is required and should be more than 3 characters</p></div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-5 col-form-label">Skills(optional):</label>
+            </div>
+            <div class="form-group-row">
+                    <label class="col-sm-5 col-form-label">Skill 1:</label>
+                    <input type="text" class="form-control ml-3" name= "updatePet.skillone" minlength="3" [(ngModel)] = "updatePet.skillone" #skillone="ngModel"
+                    value ={{updatePet.skillone}}/>
+            </div>
+            <div class="form-group-row">
+                    <label class="col-sm-5 col-form-label">Skill 2:</label>
+                    <input type="text" class="form-control ml-3"
+                    name = "updatePet.skilltwo" 
+                    minlength="3"
+                    [(ngModel)] = "updatePet.skilltwo"
+                    #skilltwo="ngModel"
+                    value ={{updatePet.skilltwo}}/>
+            </div>
+            <div class="form-group-row">
+                    <label class="col-sm-5 col-form-label">Skill 3:</label>
+                    <input type="text" class="form-control ml-3" name = "updatePet.skillthree" minlength="3" [(ngModel)] = "updatePet.skillthree" #skillthree="ngModel" value ={{updatePet.skillthree}}/>      
+            </div>
+            <div class="form-group-row mt-3">
+                <button class="btn btn-primary form-control ml-3" [disabled] = "!description.valid || !pettype.valid" type="submit">Edit pet</button>
+            </div>
+            <div class="form-group-row mt-3">
+                <button class="btn btn-primary form-control ml-3" [routerLink]="['/view',updatePet._id]">Cancel</button>
+            </div>  
+      </form>
+      </div>
+    </div>
+  </div>
+
+
+  
